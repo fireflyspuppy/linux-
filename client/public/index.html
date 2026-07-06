@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tank Trouble - 坦克动荡</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+    <div id="ui-overlay">
+      <div id="screen-menu" class="screen">
+        <div class="menu-box">
+          <h1 class="title">坦克动荡</h1>
+          <p class="subtitle">TANK TROUBLE</p>
+          <div class="menu-buttons">
+            <button id="btn-ai-match" class="btn primary">🤖 单人 vs AI</button>
+            <button id="btn-queue" class="btn primary">⚔️ 在线匹配</button>
+            <button id="btn-leaderboard" class="btn secondary">🏆 排行榜</button>
+          </div>
+          <div class="tutorial">
+            <h3>操作说明</h3>
+            <div class="keys-row">
+              <div class="key-group">
+                <kbd>W</kbd>
+                <kbd>A</kbd>
+                <kbd>S</kbd>
+                <kbd>D</kbd>
+                <span class="key-label">移动 / 转向</span>
+              </div>
+              <div class="key-divider"></div>
+              <div class="key-group">
+                <kbd class="key-wide">空格</kbd>
+                <span class="key-label">开火</span>
+              </div>
+            </div>
+            <p class="tutorial-tip">💡 子弹碰到墙壁会<em>反弹</em>，反弹的子弹也能击中自己！</p>
+          </div>
+          <div id="leaderboard-panel" class="panel hidden">
+            <h3>排行榜</h3>
+            <ol id="leaderboard-list"></ol>
+            <button id="btn-close-leaderboard" class="btn small">关闭</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="screen-lobby" class="screen hidden">
+        <div class="lobby-box">
+          <h2>正在寻找对手...</h2>
+          <div class="spinner"></div>
+          <p id="queue-position"></p>
+          <button id="btn-cancel-queue" class="btn secondary">取消</button>
+        </div>
+      </div>
+
+      <div id="screen-game" class="screen hidden">
+        <div id="hud">
+          <div id="hud-left">
+            <span id="hud-p1-name"></span>
+            <span id="hud-p1-score">0</span>
+          </div>
+          <div id="hud-center">
+            <span id="hud-timer">90</span>
+          </div>
+          <div id="hud-right">
+            <span id="hud-p2-score">0</span>
+            <span id="hud-p2-name"></span>
+          </div>
+        </div>
+        <div id="kill-feed"></div>
+        <div id="countdown-overlay" class="hidden"></div>
+      </div>
+
+      <div id="screen-gameover" class="screen hidden">
+        <div class="gameover-box">
+          <h2 id="gameover-title"></h2>
+          <div id="gameover-stats"></div>
+          <div class="gameover-buttons">
+            <button id="btn-play-again" class="btn primary">再来一局</button>
+            <button id="btn-back-menu" class="btn secondary">返回菜单</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/network.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/gameClient.js"></script>
+  <script src="js/screens/menuScreen.js"></script>
+  <script src="js/screens/lobbyScreen.js"></script>
+  <script src="js/screens/gameScreen.js"></script>
+  <script src="js/screens/gameOverScreen.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

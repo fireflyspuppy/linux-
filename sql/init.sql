@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS leaderboard (
+    id SERIAL PRIMARY KEY,
+    player_name VARCHAR(32) UNIQUE NOT NULL,
+    score INTEGER NOT NULL DEFAULT 0,
+    wins INTEGER NOT NULL DEFAULT 0,
+    losses INTEGER NOT NULL DEFAULT 0,
+    games_played INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_leaderboard_score ON leaderboard(score DESC);
